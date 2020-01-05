@@ -1,0 +1,47 @@
+﻿
+<form id="uplaodfile" action="~/Visa/UploadFiles" enctype="multipart/form-data">
+
+    <label><input type="file" name="file1"    />picture </label>
+    <label><input type="file" name="file2"   />passboard </label>
+    <label><input type="file"  name="file3"   />visa </label>
+    <label><input type="file"  name="file3"   />card </label>
+
+
+    <button class="btn btn-default" id="btnUpload">Upload</button>
+</form>
+@section Scripts{
+    <script type="text/javascript">
+
+
+   
+        $(document).ready(function () {
+            $("#uplaodfile").submit(function (e) {
+           
+                var formData = new FormData(this);
+                debugger;
+
+                $.ajax({
+                    type: "POST",
+                    url: "/Visa/UploadFiles",
+                    dataType: "json",
+                    contentType: false, // Not to set any content header
+                    processData: false, // Not to process data
+                    data: formData ,
+                    success: function (result, status, xhr) {
+                        alert(result);
+                    },
+                    error: function (xhr, status, error) {
+                        alert(status);
+                    }
+                });
+            });
+        });
+    </script>
+
+
+
+}
+
+
+
+   
